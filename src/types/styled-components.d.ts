@@ -28,5 +28,5 @@ declare module "styled-components" {
   };
 
   type ZIndex = Record<ZIndexElement, number>;
-  type ZIndexElement = "menu" | "tooltip";
+  type ZIndexElement = "overlay" | "menu" | "tooltip";
 }
