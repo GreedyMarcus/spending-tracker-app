@@ -8,6 +8,7 @@
     "^@hooks/(.*)$",
     "^@utils/(.*)$",
     "^@styles/(.*)$",
+    "^@svgs/(.*)$",
     "^[./]"
   ],
   "importOrderSortSpecifiers": true,
