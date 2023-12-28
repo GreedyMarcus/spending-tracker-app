@@ -3,6 +3,7 @@ import { Button } from "@components/Button";
 
 export const Component = styled(Button)(
   ({ theme }) => css`
+    justify-content: flex-start;
     box-shadow: none;
     padding: 0.5rem 0.75rem;
     width: unset;

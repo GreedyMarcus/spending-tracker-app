@@ -11,6 +11,7 @@ export type MenuProps<TElement extends HTMLElement> = {
   open: boolean;
   anchorElement: TElement | null;
   placement?: Placement;
+  width?: string;
   children: ReactNode;
   onClose?: VoidFunction;
 };
@@ -19,6 +20,7 @@ export function Menu<TElement extends HTMLElement>({
   open,
   anchorElement,
   placement = "bottom-end",
+  width,
   children,
   onClose,
   ...rest
@@ -45,7 +47,7 @@ export function Menu<TElement extends HTMLElement>({
       {open && (
         <Animate name="fade" zIndex="menu">
           <Overlay transparent onClick={handleClose}>
-            <S.Component ref={refs.setFloating} role="menu" style={floatingStyles} {...rest}>
+            <S.Component ref={refs.setFloating} role="menu" $width={width} style={floatingStyles} {...rest}>
               {children}
             </S.Component>
           </Overlay>

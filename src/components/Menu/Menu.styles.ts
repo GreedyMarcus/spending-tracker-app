@@ -1,7 +1,11 @@
 import styled, { css } from "styled-components";
 
-export const Component = styled.div(
-  ({ theme }) => css`
+type ComponentProps = {
+  $width?: string;
+};
+
+export const Component = styled.div<ComponentProps>(
+  ({ theme, $width }) => css`
     overflow: auto;
     display: flex;
     flex-direction: column;
@@ -12,5 +16,6 @@ export const Component = styled.div(
     border-radius: ${theme.shape.borderRadius};
     background-color: white;
     padding: 0.25rem;
+    width: ${$width};
   `
 );
