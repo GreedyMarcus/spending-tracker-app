@@ -18,16 +18,19 @@
     "preview": "vite preview",
     "test": "vitest --run --passWithNoTests",
     "lint": "eslint .",
-    "format": "prettier --write src/**/*"
+    "format": "prettier --write src/**/*",
+    "generate-envs": "cp .env.example .env"
   },
   "dependencies": {
     "@floating-ui/react-dom": "^2.0.4",
+    "axios": "^1.6.3",
     "framer-motion": "^10.16.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hotkeys-hook": "^4.4.1",
     "styled-components": "^6.1.6",
-    "vite-plugin-svgr": "^4.2.0"
+    "vite-plugin-svgr": "^4.2.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",
