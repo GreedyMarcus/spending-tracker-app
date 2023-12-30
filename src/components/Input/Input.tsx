@@ -1,4 +1,6 @@
 import { Ref, forwardRef } from "react";
+import { Stack } from "@components/Stack";
+import { Text } from "@components/Text";
 import * as S from "./Input.styles";
 
 export type InputProps = {
@@ -6,6 +8,7 @@ export type InputProps = {
   name?: string;
   placeholder?: string;
   disabled?: boolean;
+  errorMessage?: string;
   type?: "text" | "number";
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
@@ -13,6 +16,13 @@ export type InputProps = {
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
 };
 
-export const Input = forwardRef((props: InputProps, ref: Ref<HTMLInputElement>) => {
-  return <S.Component ref={ref} autoComplete="off" {...props} />;
+export const Input = forwardRef(({ errorMessage, ...rest }: InputProps, ref: Ref<HTMLInputElement>) => {
+  return (
+    <Stack direction="column" spacing={0.25} fullWidth>
+      <S.Component ref={ref} $error={!!errorMessage} {...rest} />
+      <Text variant="secondary" color="error.500">
+        {errorMessage}
+      </Text>
+    </Stack>
+  );
 });

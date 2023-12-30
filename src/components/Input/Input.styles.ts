@@ -1,12 +1,16 @@
 import styled, { css } from "styled-components";
 
-export const Component = styled.input(
-  ({ theme }) => css`
+type ComponentProps = {
+  $error?: boolean;
+};
+
+export const Component = styled.input<ComponentProps>(
+  ({ theme, $error }) => css`
     outline: 0.0625rem solid transparent;
     border: 0.0625rem solid ${theme.colors.black[300]};
     border-radius: ${theme.shape.borderRadius};
     background-color: white;
-    box-shadow: ${theme.shadows};
+    box-shadow: ${theme.shadow};
     padding: 0.75rem 1rem;
     color: ${theme.colors.black[900]};
     width: 100%;
@@ -37,9 +41,16 @@ export const Component = styled.input(
       cursor: not-allowed;
 
       &::placeholder {
-        color: ${theme.colors.black[300]};
+        color: ${theme.colors.black[400]};
       }
     }
+
+    ${$error &&
+    css`
+      outline-color: ${theme.colors.error[500]} !important;
+      border-color: ${theme.colors.error[500]} !important;
+      color: ${theme.colors.error[500]};
+    `};
 
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {

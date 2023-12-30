@@ -15,6 +15,7 @@ export const Component = styled.button<ComponentProps>(
     box-shadow: ${theme.shadow};
     padding: 0.675rem 1rem;
     width: fit-content;
+    height: fit-content;
     font-size: ${theme.text.primary};
     font-weight: 600;
     transition-property: transform, background-color, color;

@@ -8,10 +8,11 @@ import { Currency } from "../currency.types";
 
 export type CurrencySelectorProps = {
   value: Currency;
+  disabled?: boolean;
   onChange: (value: Currency) => void;
 };
 
-export function CurrencySelector({ value, onChange }: CurrencySelectorProps) {
+export function CurrencySelector({ value, disabled, onChange }: CurrencySelectorProps) {
   const [anchorElement, setAnchorElement] = useState<HTMLButtonElement | null>(null);
 
   const menuId = useId();
@@ -28,6 +29,7 @@ export function CurrencySelector({ value, onChange }: CurrencySelectorProps) {
           aria-controls={menuId}
           aria-expanded={open}
           aria-haspopup
+          disabled={disabled}
           onClick={(e) => setAnchorElement(e.currentTarget)}
         >
           {value}
