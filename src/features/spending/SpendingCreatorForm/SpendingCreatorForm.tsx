@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Controller } from "react-hook-form";
 import { CurrencySelector } from "@features/currency/CurrencySelector";
 import { Currency } from "@features/currency/currency.types";
@@ -14,9 +15,9 @@ export type SpendingCreatorFormProps = {
 };
 
 export function SpendingCreatorForm({ defaultCurrency }: SpendingCreatorFormProps) {
-  const { isPending, createSpending } = useCreateSpending();
+  const { isPending, isSuccess, createSpending } = useCreateSpending();
 
-  const { control, canSubmit, register, handleSubmit } = useSmartForm(
+  const { control, canSubmit, register, trigger, resetField, handleSubmit } = useSmartForm(
     CreateSpendingSchema,
     (data) => createSpending({ ...data, spent_at: new Date().toISOString() }),
     { currency: defaultCurrency }
@@ -24,6 +25,13 @@ export function SpendingCreatorForm({ defaultCurrency }: SpendingCreatorFormProp
 
   const descriptionInput = register({ name: "description" });
   const amountInput = register({ name: "amount" });
+
+  useEffect(() => {
+    if (isSuccess) {
+      resetField("description");
+      resetField("amount");
+    }
+  }, [isSuccess]);
 
   return (
     <S.Container>
@@ -38,7 +46,14 @@ export function SpendingCreatorForm({ defaultCurrency }: SpendingCreatorFormProp
           name="currency"
           control={control}
           render={({ field: { value, onChange } }) => (
-            <CurrencySelector value={value} disabled={isPending} onChange={onChange} />
+            <CurrencySelector
+              value={value}
+              disabled={isPending}
+              onChange={(newValue) => {
+                onChange(newValue);
+                trigger("amount");
+              }}
+            />
           )}
         />
         <Button color="success" disabled={isPending || !canSubmit} onClick={handleSubmit}>
