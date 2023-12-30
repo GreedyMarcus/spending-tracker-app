@@ -1,3 +1,5 @@
+import { SpendingOverview } from "@features/spending/SpendingOverview";
+
 export function App() {
-  return <h1>Hello, Spending Tracker!</h1>;
+  return <SpendingOverview />;
 }

@@ -9,7 +9,7 @@ export type CurrencyFilterProps = {
 
 export function CurrencyFilter({ value, onChange }: CurrencyFilterProps) {
   return (
-    <Stack spacing={1}>
+    <Stack spacing={0.75}>
       {Object.values(CurrencyFilterOption).map((option) => (
         <Button key={option} color={value === option ? "primary" : "light"} onClick={() => onChange(option)}>
           {option}

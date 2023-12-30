@@ -1,4 +1,6 @@
+import { AnimatePresence } from "framer-motion";
 import { Ref, forwardRef } from "react";
+import { Animate } from "@components/Animate";
 import { Stack } from "@components/Stack";
 import { Text } from "@components/Text";
 import * as S from "./Input.styles";
@@ -20,9 +22,15 @@ export const Input = forwardRef(({ errorMessage, ...rest }: InputProps, ref: Ref
   return (
     <Stack direction="column" spacing={0.25} fullWidth>
       <S.Component ref={ref} $error={!!errorMessage} {...rest} />
-      <Text variant="secondary" color="error.500">
-        {errorMessage}
-      </Text>
+      <AnimatePresence>
+        {errorMessage && (
+          <Animate name="fade">
+            <Text variant="secondary" color="error.500">
+              {errorMessage}
+            </Text>
+          </Animate>
+        )}
+      </AnimatePresence>
     </Stack>
   );
 });

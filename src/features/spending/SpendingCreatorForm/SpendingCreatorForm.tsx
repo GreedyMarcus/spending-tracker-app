@@ -6,6 +6,7 @@ import { Input } from "@components/Input";
 import { Stack } from "@components/Stack";
 import { useSmartForm } from "@hooks/useSmartForm";
 import { CreateSpendingSchema } from "../spending.schema";
+import * as S from "./SpendingCreatorForm.styles";
 import { useCreateSpending } from "./useCreateSpending";
 
 export type SpendingCreatorFormProps = {
@@ -25,19 +26,25 @@ export function SpendingCreatorForm({ defaultCurrency }: SpendingCreatorFormProp
   const amountInput = register({ name: "amount" });
 
   return (
-    <Stack spacing={1} fullWidth>
-      <Input type="text" placeholder="Description" disabled={isPending} {...descriptionInput} />
-      <Input type="number" placeholder="Amount" disabled={isPending} {...amountInput} />
-      <Controller
-        name="currency"
-        control={control}
-        render={({ field: { value, onChange } }) => (
-          <CurrencySelector value={value} disabled={isPending} onChange={onChange} />
-        )}
-      />
-      <Button color="success" disabled={isPending || !canSubmit} onClick={handleSubmit}>
-        Save
-      </Button>
-    </Stack>
+    <S.Container>
+      <S.InputContainer>
+        <Input type="text" placeholder="Description" disabled={isPending} {...descriptionInput} />
+      </S.InputContainer>
+      <S.InputContainer>
+        <Input type="number" placeholder="Amount" disabled={isPending} {...amountInput} />
+      </S.InputContainer>
+      <Stack spacing={0.75} justifyContent="flex-end" fullWidth>
+        <Controller
+          name="currency"
+          control={control}
+          render={({ field: { value, onChange } }) => (
+            <CurrencySelector value={value} disabled={isPending} onChange={onChange} />
+          )}
+        />
+        <Button color="success" disabled={isPending || !canSubmit} onClick={handleSubmit}>
+          Save
+        </Button>
+      </Stack>
+    </S.Container>
   );
 }

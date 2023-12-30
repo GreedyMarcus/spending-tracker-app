@@ -36,6 +36,7 @@ export function SpendingOrderSelector({ value, onChange }: SpendingOrderSelector
         open={open}
         anchorElement={anchorElement}
         aria-labelledby={menuButtonId}
+        placement="bottom-start"
         onClose={() => setAnchorElement(null)}
       >
         {Object.values(SpendingOrderOption).map((option) => (

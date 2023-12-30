@@ -15,8 +15,8 @@ export function Tooltip({ content, children }: TooltipProps) {
 
   const { refs, floatingStyles } = useFloating<HTMLElement>({
     open: isElementHovering,
-    placement: "bottom",
-    middleware: [offset({ mainAxis: 6 }), flip(), shift()],
+    placement: "top",
+    middleware: [offset({ mainAxis: 8 }), flip(), shift()],
     elements: {
       reference: observableElement,
     },
