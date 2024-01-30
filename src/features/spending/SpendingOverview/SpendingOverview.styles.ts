@@ -45,5 +45,9 @@ export const FilterSection = styled.div(
       justify-content: space-between;
       max-width: ${theme.screen.md};
     }
+
+    @media (min-width: ${theme.screen.xl}) {
+      max-width: ${theme.screen.lg};
+    }
   `
 );
