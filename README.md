@@ -1,4 +1,4 @@
-# Spending Tracker
+# Spending Tracker App
 
 Simple application to track spendings.
 
