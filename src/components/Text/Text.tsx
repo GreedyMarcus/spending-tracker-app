@@ -8,9 +8,10 @@ export type TextProps = {
   variant?: TextVariant;
   color?: ColorOption;
   bold?: boolean;
+  breakWord?: boolean;
   children: ReactNode;
 };
 
-export function Text({ variant = "primary", color = "black.900", bold, ...rest }: TextProps) {
-  return <S.Component $variant={variant} $bold={bold} color={parseColor(color)} {...rest} />;
+export function Text({ variant = "primary", color = "black.900", bold, breakWord, ...rest }: TextProps) {
+  return <S.Component $variant={variant} $bold={bold} $breakWord={breakWord} color={parseColor(color)} {...rest} />;
 }

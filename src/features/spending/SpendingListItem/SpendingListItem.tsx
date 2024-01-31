@@ -17,13 +17,13 @@ export type SpendingListItemProps = {
 export function SpendingListItem({ description, spentAt, amount, currency }: SpendingListItemProps) {
   return (
     <ListItem>
-      <Stack alignItems="center" justifyContent="space-between" fullWidth>
+      <Stack alignItems="center" justifyContent="space-between" spacing={1.5} fullWidth>
         <Stack spacing={1.5}>
           <IconContainer color="primary.700" background="primary.200">
             <DollarIcon />
           </IconContainer>
           <Stack direction="column" spacing={0.125}>
-            <Text variant="primary" bold>
+            <Text variant="primary" bold breakWord>
               {description}
             </Text>
             <Text variant="secondary" color="black.400">
